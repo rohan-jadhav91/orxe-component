@@ -22,9 +22,9 @@ export class OrxeCounter extends LitElement {
   render() {
     return html`
       <div>
-        <button @click="${this.decreaseButtonClicked}" ?disabled=${this.min === this.value}>-</button>
+        <button @click="${this.onDecreaseClicked}" ?disabled=${this.min === this.value}>-</button>
         <label>  ${this.value}  </label>
-        <button @click="${this.increaseButtonClicked}" ?disabled=${this.max === this.value}>+</button>
+        <button @click="${this.onIncreaseCliked}" ?disabled=${this.max === this.value}>+</button>
       </div>
     `;
   }
@@ -36,12 +36,12 @@ export class OrxeCounter extends LitElement {
     this.value =this.value < this.min || this.value > this.max ? this.min : this.value;
   }
 
-  decreaseButtonClicked() {
+  onDecreaseClicked() {
     const updatedValue = this.value - this.step;
     this.value = updatedValue >= this.min ? updatedValue : this.value;
   }
 
-  increaseButtonClicked() {
+  onIncreaseCliked() {
     const updatedValue = this.value + this.step;
     this.value = updatedValue <= this.max ? updatedValue : this.value;
   }
